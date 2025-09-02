@@ -99,4 +99,18 @@ app.post('/update-prices', async (req, res) => {
 });
 
 // Función simulada para actualizar precios
-async function
+async function fetchUpdatedPrices() {
+  return {
+    "panel-100": { base: { small: 3200, medium: 3600, large: 4000 }, factor: { new: 0, mid: 400, old: 800 } },
+    "panel-200": { base: { small: 4800, medium: 5200, large: 5800 }, factor: { new: 0, mid: 500, old: 1000 } },
+    "ev-charger": { base: { small: 850, medium: 1200, large: 1500 }, factor: { new: 0, mid: 200, old: 400 } },
+    "smart-home": { base: { small: 2000, medium: 3500, large: 5000 }, factor: { new: 0, mid: 300, old: 600 } }
+  };
+}
+
+// 6. Puerto y arranque del servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Servidor corriendo en puerto ${PORT}`);
+  console.log('🔧 Esperando solicitudes en /send-code y /check-code');
+});
